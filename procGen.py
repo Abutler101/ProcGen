@@ -63,7 +63,7 @@ def OEAS(T,S): #FILLS 1 second
 def FEOS(T,S,D): #FILLS 1 second
     FEOS=[
         [T+0.00, '"enemy"', dirs[D], S],
-        [T+0.25, 'enemy"', dirs[D], S],
+        [T+0.25, '"enemy"', dirs[D], S],
         [T+0.50, '"enemy"', dirs[D], S],
         [T+0.75, '"enemy"', dirs[D], S]
         ]
@@ -200,13 +200,10 @@ for i in range(dur):
             
     else:
         i-=1
-#for y in range(len(level)):
-#    for z in range(len(level[y])):
-#        print(level[y][z])
-
 ##########################Start formatting
+colon = ":"
 for x in range(len(level)):
-    temp = '\n    "'+str(x+1)+":"+'"\n    [\n'
+    temp = '\n    "'+str(x+1)+'"'+":"+'\n    [\n'
     for w in range(len(level[x])):
         temp = temp+"       "+str(level[x][w])
         if (w+1) != len(level[x]):
@@ -216,7 +213,7 @@ for x in range(len(level)):
     temp = temp + "    ]"
     if (x+1) != len(level):
         temp = temp+","
-    #print(temp)
     formattedOutput = formattedOutput + temp
 formattedOutput = formattedOutput + "\n}"
+formattedOutput = formattedOutput.replace("'", "")
 print(formattedOutput)
