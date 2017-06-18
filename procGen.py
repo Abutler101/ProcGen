@@ -201,19 +201,29 @@ for i in range(dur):
     else:
         i-=1
 ##########################Start formatting
-colon = ":"
+
+##########################MAKES LOADS OF DIFFERENT PARTS - TOO HARD
+#for x in range(len(level)):
+#    temp = '\n    "'+str(x+1)+'"'+":"+'\n    [\n'
+#    for w in range(len(level[x])):
+#        temp = temp+"       "+str(level[x][w])
+#        if (w+1) != len(level[x]):
+#            temp = temp+",\n"
+#        else:
+#            temp = temp+"\n"
+#    temp = temp + "    ]"
+#    if (x+1) != len(level):
+#        temp = temp+","
+#   formattedOutput = formattedOutput + temp
+
+##########################SECOND ATTEMPT
+garp = '\n    "1":\n    [\n'
 for x in range(len(level)):
-    temp = '\n    "'+str(x+1)+'"'+":"+'\n    [\n'
     for w in range(len(level[x])):
-        temp = temp+"       "+str(level[x][w])
-        if (w+1) != len(level[x]):
-            temp = temp+",\n"
-        else:
-            temp = temp+"\n"
-    temp = temp + "    ]"
-    if (x+1) != len(level):
-        temp = temp+","
-    formattedOutput = formattedOutput + temp
+        temp = '        '+str(level[x][w])
+    
+
+
 formattedOutput = formattedOutput + "\n}"
 formattedOutput = formattedOutput.replace("'", "")
 print(formattedOutput)
