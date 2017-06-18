@@ -1,7 +1,6 @@
 #[TIME,TYPE_OF_SQUARE,DIRECTION,SPEED]
 type= ["enemy","friend"]
 dirs=["D","L","U","R"]
-sp=55
 level=[]
 #Template
 '''
@@ -30,14 +29,26 @@ level=[]
     ],
 '''
 ##########################Pre-built blocks
-def DEAS(x):
+def DEAS(T,S):
     DEAS=[
-        [4.00, "enemy", "D", 55],
-        [4.25, "enemy", "D", 55],
-        [4.50, "enemy", "L", 55],
-        [4.75, "enemy", "L", 55],
-        [5.00, "enemy", "U", 55],
-        [5.25, "enemy", "U", 55],
-        [5.50, "enemy", "R", 55],
-        [5.75, "enemy", "R", 55]
+        [T+0.00, "enemy", "D", S],
+        [T+0.25, "enemy", "D", S],
+        [T+0.50, "enemy", "L", S],
+        [T+0.75, "enemy", "L", S],
+        [T+1.00, "enemy", "U", S],
+        [T+1.25, "enemy", "U", S],
+        [T+1.50, "enemy", "R", S],
+        [T+1.75, "enemy", "R", S]
+        ]
+def FEOS(T,S,D):
+    FEOS=[
+        [T+0.00, "enemy", D, S],
+        [T+0.25, "enemy", D, S],
+        [T+0.50, "enemy", D, S],
+        [T+0.75, "enemy", D, S]
+        ]
+def TEOS(T,S,D):
+    FEOS=[
+        [T+0.00, "enemy", D, S],
+        [T+0.25, "enemy", D, S],
         ]
