@@ -7,7 +7,7 @@ formattedOutput ='''{
     "rankC": 1,
     "rankB": 100,
     "rankA": 180,
-    "rankA+": 280'''
+    "rankA+": 280,'''
 speed = 0
 dur = 64
 #Template
@@ -38,25 +38,25 @@ dur = 64
 }
 '''
 ##########################Pre-built blocks
-def DEAS(T,S): #FILLS 2 seconds
+def DEAS(T,S): #FILLS 4 seconds
     DEAS=[
         [T+0.00, '"enemy"', '"D"', S],
-        [T+0.25, '"enemy"', '"D"', S],
-        [T+0.50, '"enemy"', '"L"', S],
-        [T+0.75, '"enemy"', '"L"', S],
-        [T+1.00, '"enemy"', '"U"', S],
-        [T+1.25, '"enemy"', '"U"', S],
-        [T+1.50, '"enemy"', '"R"', S],
-        [T+1.75, '"enemy"', '"R"', S]
+        [T+0.50, '"enemy"', '"D"', S],
+        [T+1.00, '"enemy"', '"L"', S],
+        [T+1.50, '"enemy"', '"L"', S],
+        [T+2.00, '"enemy"', '"U"', S],
+        [T+2.50, '"enemy"', '"U"', S],
+        [T+3.00, '"enemy"', '"R"', S],
+        [T+3.50, '"enemy"', '"R"', S]
         ]
     return(DEAS)
 
-def OEAS(T,S): #FILLS 1 second
+def OEAS(T,S): #FILLS 2 second
     OEAS=[
         [T+0.00, '"enemy"', '"D"', S],
-        [T+0.25, '"enemy"', '"L"', S],
-        [T+0.50, '"enemy"', '"U"', S],
-        [T+0.75, '"enemy"', '"R"', S]
+        [T+0.50, '"enemy"', '"L"', S],
+        [T+1.00, '"enemy"', '"U"', S],
+        [T+1.75, '"enemy"', '"R"', S]
         ]
     return(OEAS)
 
@@ -95,16 +95,16 @@ def TEOPS(T,S,D): #FILLS 1 second
         TEOPS.append([T+0.75, '"enemy"', '"L"', S])
     return(TEOPS)
 
-def DFAS(T,S): #FILLS 2 seconds
+def DFAS(T,S): #FILLS 4 seconds
     DFAS=[
         [T+0.00, '"friend"', '"D"', S],
-        [T+0.25, '"friend"', '"D"', S],
-        [T+0.50, '"friend"', '"L"', S],
-        [T+0.75, '"friend"', '"L"', S],
-        [T+1.00, '"friend"', '"U"', S],
-        [T+1.25, '"friend"', '"U"', S],
-        [T+1.50, '"friend"', '"R"', S],
-        [T+1.75, '"friend"', '"R"', S]
+        [T+0.50, '"friend"', '"D"', S],
+        [T+1.00, '"friend"', '"L"', S],
+        [T+1.50, '"friend"', '"L"', S],
+        [T+2.00, '"friend"', '"U"', S],
+        [T+2.50, '"friend"', '"U"', S],
+        [T+3.00, '"friend"', '"R"', S],
+        [T+3.50, '"friend"', '"R"', S]
         ]
     return(DFAS)
 
@@ -158,10 +158,11 @@ for i in range(dur):
     
     if select == 1:
         level.append(DEAS(i,speed))
-        i+=1
+        i+=3
         
     elif select == 2:
         level.append(OEAS(i,speed))
+        i+=1
         
     elif select == 3:
         temp = ran(0,3)
@@ -180,7 +181,7 @@ for i in range(dur):
         
         if select == 6:
             level.append(DFAS(i,speed))
-            i+=1
+            i+=3
             
         elif select == 7:
             level.append(OFAS(i,speed))
@@ -221,9 +222,11 @@ garp = '\n    "1":\n    [\n'
 for x in range(len(level)):
     for w in range(len(level[x])):
         temp = '        '+str(level[x][w])
-    
+        temp = temp+",\n"
+        garp = garp + temp
+#print(garp)
 
-
+formattedOutput = formattedOutput + garp[:len(garp)-2] + "\n    ]"
 formattedOutput = formattedOutput + "\n}"
 formattedOutput = formattedOutput.replace("'", "")
 print(formattedOutput)
